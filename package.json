@@ -1,0 +1,20 @@
+{
+  "name": "trabalho-sistemas-distribuidos",
+  "version": "1.0.0",
+  "description": "Node.js lottery",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rpiresfl/trabalho-sistemas-distribuidos.git"
+  },
+  "author": "Raul Pires Ferreira Leal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rpiresfl/trabalho-sistemas-distribuidos/issues"
+  },
+  "homepage": "https://github.com/rpiresfl/trabalho-sistemas-distribuidos#readme"
+}
