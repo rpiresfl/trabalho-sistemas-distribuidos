@@ -1,28 +1,17 @@
-var readline = require('readline');
 var fs = require('fs');
 var nums = [];
 var receiptLines = [];
 var winningBets = 0;
 
-var leitor = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-function readWinningNumbers(prompt = '1: ') {
-    leitor.question(prompt, (answer) => {
-        if (answer < 1 || answer > 60) {
-            readWinningNumbers(nums.length + 1 + ': ');
-        } else {
-            nums.push(answer);
-            if (nums.length > 5) {
-                leitor.close();
-                checkForWinners();
-            } else {
-                readWinningNumbers(nums.length + 1 + ': ');
-            }
+function generateWinningNumbers() {
+    while(nums.length !== 6) {
+        let random = Math.floor(Math.random() * (61 - 1) + 1);
+        if (nums.indexOf(random) === -1) {
+            nums.push(random);
         }
-    });
+    }
+
+    checkForWinners();
 }
 
 function checkForWinners() {
@@ -37,8 +26,10 @@ function checkForWinners() {
                 let dozens = line.split(',');
                 let count = 0;
 
-                for (let i=0;i<dozens.length;i++) {
-                    if (dozens[i] === nums[i]) count++;
+                for (let i=0;i<nums.length;i++) {
+                    if (dozens.includes(nums[i] + '')) {
+                        count++;
+                    }
                 };
                 if (count === 6) winningBets++;
 
@@ -94,5 +85,4 @@ function checkMinHour(value) {
     return value;
 }
 
-console.log('Informe 6 numeros entre 1 e 60:');
-readWinningNumbers();
+generateWinningNumbers();
